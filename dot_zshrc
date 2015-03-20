@@ -1,0 +1,20 @@
+#
+# Executes commands at the start of an interactive session.
+#
+# Authors:
+#   Sorin Ionescu <sorin.ionescu@gmail.com>
+#
+
+# Source Prezto.
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
+
+# Customize to your needs...
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+export PATH=/Library/Frameworks/Python.framework/Versions/2.7/bin:~/Library/Python/2.7/bin:$PATH
+alias vi='DYLD_FORCE_FLAT_NAMESPACE=1 mvim -v'
+alias vim='DYLD_FORCE_FLAT_NAMESPACE=1 mvim'
+powerline-daemon -q
+. /Users/sliu1/Library/Python/2.7/lib/python/site-packages/powerline/bindings/zsh/powerline.zsh
