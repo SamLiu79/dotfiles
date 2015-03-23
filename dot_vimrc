@@ -1,5 +1,5 @@
 set guifont=Sauce\ Code\ Powerline:h13
-set lines=999 columns=9999
+set lines=52 columns=202
 
 set nocompatible              " be iMproved, required
 filetype off                  " required
@@ -26,6 +26,8 @@ Plugin 'Chiel92/vim-autoformat'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tacahiroy/ctrlp-funky'
 Plugin 'bling/vim-airline'
+Plugin 'tpope/vim-endwise'
+Plugin 'Lokaltog/vim-easymotion'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -89,6 +91,8 @@ set tabstop=4
 set shiftwidth=4
 " 让 vim 把连续数量的空格视为一个制表符
 set softtabstop=4
+
+set showmatch
 
 " auto indent tab
 " 随 vim 自启动
@@ -167,7 +171,7 @@ let NERDTreeMinimalUI=1
 " 删除文件时自动删除文件对应 buffer
 let NERDTreeAutoDeleteBuffer=1
 
-let g:nerdtree_tabs_open_on_console_startup=1
+let g:nerdtree_tabs_open_on_console_startup=0
 map <leader>n <plug>NERDTreeTabsToggle <CR>
 
 set statusline+=%#warningmsg#
@@ -182,7 +186,7 @@ let g:syntastic_python_checkers = ['flake8']
 
 nmap <Leader>af :Autoformat<CR>
 
-let g:ctrlp_map = '<c-s-p>'
+let g:ctrlp_map = '<c-s-o>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
