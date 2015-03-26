@@ -13,7 +13,13 @@ fi
 # Customize to your needs...
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
-export PATH=/Library/Frameworks/Python.framework/Versions/2.7/bin:~/Library/Python/2.7/bin:$PATH
+
+# python path
+export PATH=/Library/Frameworks/Python.framework/Versions/2.7/bin:$PATH
+
+# postgresql.app path
+export PATH=~/Library/Python/2.7/bin:/Applications/Postgres.app/Contents/Versions/9.4/bin/:$PATH
+
 alias vi='DYLD_FORCE_FLAT_NAMESPACE=1 mvim -v'
 alias vim='DYLD_FORCE_FLAT_NAMESPACE=1 mvim -v'
 #alias vim="tmux new-window 'DYLD_FORCE_FLAT_NAMESPACE=1 /usr/local/bin/mvim -v'"
