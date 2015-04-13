@@ -32,11 +32,15 @@ zstyle ':prezto:load' pmodule \
   'spectrum' \
   'utility' \
   'completion' \
-  'prompt' \
   'python' \
   'ruby' \
   'ssh' \
-  'tmux'
+  'tmux' \
+  'homebrew' \
+  'osx' \
+  'history-substring-search' \
+  'syntax-highlighting' \
+  'prompt' \
 
 #
 # Editor
