@@ -1,5 +1,6 @@
 #!/bin/sh
 
+
 dotfiles=`ls dot_*`
 
 # link to dotfiles
