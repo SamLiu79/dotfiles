@@ -10,6 +10,23 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
+export HISTSIZE=10000
+#注销后保存的历史纪录条目数量
+export SAVEHIST=10000
+#历史纪录文件
+export HISTFILE=~/.zhistory
+#以附加的方式写入历史纪录
+setopt INC_APPEND_HISTORY
+#如果连续输入的命令相同，历史纪录中只保留一个
+setopt HIST_IGNORE_DUPS
+#为历史纪录中的命令添加时间戳
+setopt EXTENDED_HISTORY      
+ 
+#启用 cd 命令的历史纪录，cd -[TAB]进入历史路径
+setopt AUTO_PUSHD
+#相同的历史路径只保留一个
+setopt PUSHD_IGNORE_DUPS
+
 # Customize to your needs...
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
@@ -27,5 +44,21 @@ alias vim='DYLD_FORCE_FLAT_NAMESPACE=1 mvim -v'
 powerline-daemon -q
 . /Users/sliu1/Library/Python/2.7/lib/python/site-packages/powerline/bindings/zsh/powerline.zsh
 
+zstyle -e ':completion:*:(ssh|scp|sftp|rsh|rsync):hosts' hosts 'reply=(${=${${(f)"$(cat {/etc/ssh_,~/.ssh/known_}hosts(|2)(N) /dev/null)"}%%[# ]*}//,/ })'
+
+# 历史纪录
+alias h='history'
+function hs
+{
+    history | grep $*
+}
+alias hsi='hs -i'
+
 source ~/.profile
 #export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+ctrlp() {
+    </dev/tty vim -c CtrlP
+}
+zle -N ctrlp
+
+bindkey "^o" ctrlp

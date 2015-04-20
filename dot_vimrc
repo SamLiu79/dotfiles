@@ -14,7 +14,7 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'altercation/vim-colors-solarized'
+"Plugin 'altercation/vim-colors-solarized'
 Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'SirVer/ultisnips'
@@ -82,7 +82,8 @@ syntax enable
 syntax on
 
 set background=dark
-colorscheme solarized
+"colorscheme solarized
+color Tomorrow-Night
 
 " 自适应不同语言的智能缩进
 filetype indent on
