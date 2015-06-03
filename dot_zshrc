@@ -97,9 +97,13 @@ export SSH_KEY_PATH="~/.ssh/dsa_id"
 #
 # Example aliases
 alias zshrc="vim ~/.zshrc"
+alias vimrc="vim ~/.vimrc"
+
 #alias ohmyzsh="mate ~/.oh-my-zsh"
 #
-export PATH=/Users/sliu1/Library/Python/2.7/bin:$PATH
+export PATH=/Users/sliu1/Library/Python/2.7/bin:/usr/local/go/bin/:$PATH
 powerline-daemon -q
 . /Users/sliu1/Library/Python/2.7/lib/python/site-packages/powerline/bindings/zsh/powerline.zsh
 source ~/.profile
+export PYTHONSTARTUP=$HOME/.pythonrc.py
+export GOPATH=$HOME/go

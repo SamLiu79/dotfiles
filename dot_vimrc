@@ -1,6 +1,5 @@
 set guifont=Sauce\ Code\ Powerline:h13
 set lines=52 columns=202
-
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -32,6 +31,10 @@ Plugin 'jmcantrell/vim-virtualenv'
 Plugin 'django.vim'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'PProvost/vim-ps1'
+Plugin 'reedes/vim-colors-pencil'
+"Plugin 'Raimondi/delimitMate'
+Plugin 'jiangmiao/auto-pairs'
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -84,7 +87,8 @@ syntax on
 
 set background=dark
 "colorscheme solarized
-color Tomorrow-Night
+"color Tomorrow-Night
+colorscheme pencil
 
 " 自适应不同语言的智能缩进
 filetype indent on
@@ -244,4 +248,10 @@ function! ISort()
     edit!
     redraw!
 endfunction
- 
+
+let g:airline_theme = 'pencil'
+set spell
+set complete+=kspell
+nnoremap <Leader>p :CtrlP<CR>
+nnoremap <Leader>o :CtrlPBuffer<CR>
+
