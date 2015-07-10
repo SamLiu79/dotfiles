@@ -1,3 +1,7 @@
+unalias run-help
+autoload run-help
+HELPDIR=/usr/local/share/zsh/help
+
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/sliu1/.oh-my-zsh
 
@@ -76,12 +80,14 @@ export LC_ALL=
 alias vi='DYLD_FORCE_FLAT_NAMESPACE=1 mvim -v'
 alias vim='DYLD_FORCE_FLAT_NAMESPACE=1 mvim -v'
 
+alias nvi='DYLD_FORCE_FLAT_NAMESPACE=1 nvim -u ~/.vimrc -i ~/.viminfo'
+alias nvim='DYLD_FORCE_FLAT_NAMESPACE=1 nvim -u ~/.vimrc -i ~/.viminfo'
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
 else
-  export EDITOR='mvim'
+  export EDITOR='vim'
 fi
 
 # Compilation flags

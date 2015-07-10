@@ -1,6 +1,6 @@
 set guifont=Sauce\ Code\ Powerline:h13
 set lines=52 columns=202
-set nocompatible              " be iMproved, required
+
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
@@ -13,15 +13,14 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'nathanaelkane/vim-indent-guides'
-"Plugin 'altercation/vim-colors-solarized'
+Plugin 'altercation/vim-colors-solarized'
 Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
-Plugin 'scrooloose/nerdtree'
-Plugin 'jistr/vim-nerdtree-tabs'
+"Plugin 'scrooloose/nerdtree'
+"Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'scrooloose/syntastic'
-"Plugin 'fisadev/vim-isort'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tacahiroy/ctrlp-funky'
 Plugin 'bling/vim-airline'
@@ -32,9 +31,8 @@ Plugin 'django.vim'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'PProvost/vim-ps1'
 Plugin 'reedes/vim-colors-pencil'
-"Plugin 'Raimondi/delimitMate'
 Plugin 'jiangmiao/auto-pairs'
-
+Plugin 'aserebryakov/filestyle'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -74,7 +72,7 @@ set cursorcolumn
 " 高亮显示搜索结果
 set hlsearch
 
-" enable mouse 
+" enable mouse
 set mouse=a
 
 " 禁止折行
@@ -114,14 +112,14 @@ let g:indent_guides_guide_size=1
 :nmap <silent> <Leader>i <Plug>IndentGuidesToggle
 
 
-" 设置 tagbar 子窗口的位置出现在主编辑区的左边 
-let tagbar_right=1 
-" 设置显示／隐藏标签列表子窗口的快捷键。速记：tag list 
-nnoremap <Leader>tl :TagbarToggle<CR> 
-" 设置标签子窗口的宽度 
-let tagbar_width=32 
-" tagbar 子窗口中不显示冗余帮助信息 
-let g:tagbar_compact=1
+" 设置 tagbar 子窗口的位置出现在主编辑区的左边
+let tagbar_right=1
+" 设置显示／隐藏标签列表子窗口的快捷键。速记：tag list
+nnoremap <Leader>tl :TagbarToggle<CR>
+" 设置标签子窗口的宽度
+let tagbar_width=32
+" tagbar 子窗口中不显示冗余帮助信息
+let g:tagbar_compact=0
 " 设置 ctags 对哪些代码元素生成标签
 let g:tagbar_type_cpp = {
     \ 'kinds' : [
@@ -173,8 +171,9 @@ let g:ycm_use_ultisnips_completer = 1 " Default 1, just ensure
 let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language's keyword
 let g:ycm_complete_in_comments = 1 " Completion in comments
 let g:ycm_complete_in_strings = 1 " Completion in string
-source ~/dotfiles/better_django_detect.vim
+nnoremap <leader>go :YcmCompleter GoTo<CR>
 
+source ~/dotfiles/better_django_detect.vim
 
 " UltiSnips快捷键：
 let g:UltiSnipsExpandTrigger       = "<c-j>"
@@ -185,21 +184,23 @@ let g:UltiSnipsListSnippets        = "<c-k>" "List possible snippets based on cu
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 
-" 使用 NERDTree 插件查看工程文件。设置快捷键，速记：file list
-nmap <Leader>fl :NERDTreeToggle<CR>
-" 设置NERDTree子窗口宽度
-let NERDTreeWinSize=32
-" 设置NERDTree子窗口位置
-let NERDTreeWinPos="left"
-" 显示隐藏文件
-let NERDTreeShowHidden=1
-" NERDTree 子窗口中不显示冗余帮助信息
-let NERDTreeMinimalUI=1
-" 删除文件时自动删除文件对应 buffer
-let NERDTreeAutoDeleteBuffer=1
+"" 使用 NERDTree 插件查看工程文件。设置快捷键，速记：file list
+"nmap <Leader>fl :NERDTreeToggle<CR>
+"" 设置NERDTree子窗口宽度
+"let NERDTreeWinSize=42
+"" 设置NERDTree子窗口位置
+"let NERDTreeWinPos="left"
+"" 显示隐藏文件
+"let NERDTreeShowHidden=1
+"" NERDTree 子窗口中不显示冗余帮助信息
+"let NERDTreeMinimalUI=0
+"" 删除文件时自动删除文件对应 buffer
+""let NERDTreeAutoDeleteBuffer=1
 
-let g:nerdtree_tabs_open_on_console_startup=0
-map <leader>n <plug>NERDTreeTabsToggle <CR>
+"let NERDTreeHijackNetrw = 0
+""let g:nerdtree_tabs_open_on_console_startup=1
+"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+"map <leader>n <plug>NERDTreeTabsToggle <CR>
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -234,8 +235,8 @@ let g:multi_cursor_prev_key='<C-b>'
 let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
 
-highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-match OverLength /\%81v.\+/
+"highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+"match OverLength /\%81v.\+/
 
 " auto format python
 autocmd FileType python nnoremap <leader>y :0,$!yapf<Cr>
@@ -252,6 +253,36 @@ endfunction
 let g:airline_theme = 'pencil'
 set spell
 set complete+=kspell
-nnoremap <Leader>p :CtrlP<CR>
-nnoremap <Leader>o :CtrlPBuffer<CR>
+nnoremap <Leader>o :CtrlP<CR>
+nnoremap <Leader>b :CtrlPBuffer<CR>
+
+nnoremap <leader>fx :FileStyleFix<CR>
+set textwidth=80
+
+set viminfo='100,n$HOME/.vim/files/info/viminfo'
+
+" netrw settings
+let g:netrw_liststyle=3
+let g:netrw_fastbrowse=2
+map <leader>fl :Texplore<cr> 
+
+
+set paste
+nnoremap <Leader>bd :bdelete<Cr>
+
+if has('vim')
+    set nocompatible              " be iMproved, required
+    set clipboard=unnamed
+endif
+
+
+if ! has('gui_running')
+    set ttimeoutlen=10
+    augroup FastEscape
+        autocmd!
+        au InsertEnter * set timeoutlen=0
+        au InsertLeave * set timeoutlen=1000
+    augroup END
+endif
+
 
