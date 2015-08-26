@@ -1,6 +1,6 @@
 set guifont=Sauce\ Code\ Powerline:h13
 set lines=52 columns=202
-
+let mapleader = "\<Space>" 
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -47,6 +47,8 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 "
+"
+nnoremap <Leader>w :w<CR> 
 " 禁止光标闪烁
 set gcr=a:block-blinkon0
 " " 禁止显示滚动条
@@ -244,3 +246,5 @@ function! ISort()
     redraw!
 endfunction
  
+" tmux copypaste integration
+set clipboard=unnamed
