@@ -22,15 +22,16 @@ Plugin 'honza/vim-snippets'
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'scrooloose/syntastic'
-"Plugin 'fisadev/vim-isort'
 Plugin 'kien/ctrlp.vim'
-Plugin 'tacahiroy/ctrlp-funky'
+"Plugin 'tacahiroy/ctrlp-funky'
 Plugin 'bling/vim-airline'
 Plugin 'tpope/vim-endwise'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'jmcantrell/vim-virtualenv'
 Plugin 'django.vim'
 Plugin 'terryma/vim-multiple-cursors'
+Plugin 'mhinz/vim-startify'
+Plugin 'jonathanfilip/vim-lucius'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -85,7 +86,10 @@ syntax on
 
 set background=dark
 "colorscheme solarized
-color Tomorrow-Night
+"color Tomorrow-Night
+color lucius
+"LuciusDarkLowContrast
+LuciusBlackLowContrast
 
 " 自适应不同语言的智能缩进
 filetype indent on

@@ -83,7 +83,9 @@ export ARCHFLAGS="-arch x86_64"
 
 alias vim="DYLD_FORCE_FLAT_NAMESPACE=1 reattach-to-user-namespace mvim -v"
 alias mvim="DYLD_FORCE_FLAT_NAMESPACE=1 reattach-to-user-namespace mvim"
-alias zshconfig="mate ~/.zshrc"
+alias zshrc="vim ~/.zshrc"
+alias vimrc="vim ~/.vimrc"
+alias tmuxrc="vim ~/.tmux.conf"
 alias ohmyzsh="mate ~/.oh-my-zsh"
 
 export PATH="/Users/samliu/Library/Python/2.7/bin:$PATH"
