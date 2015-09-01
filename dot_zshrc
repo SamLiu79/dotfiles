@@ -88,6 +88,7 @@ alias vimrc="vim ~/.vimrc"
 alias tmuxrc="vim ~/.tmux.conf"
 alias ohmyzsh="mate ~/.oh-my-zsh"
 
+
 export PATH="/Users/samliu/Library/Python/2.7/bin:$PATH"
 
 
