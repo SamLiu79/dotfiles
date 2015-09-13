@@ -87,7 +87,7 @@ alias zshrc="vim ~/.zshrc"
 alias vimrc="vim ~/.vimrc"
 alias tmuxrc="vim ~/.tmux.conf"
 alias ohmyzsh="mate ~/.oh-my-zsh"
-
+alias ww="aria2c"
 
 export PATH="/Users/samliu/Library/Python/2.7/bin:$PATH"
 

@@ -15,6 +15,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'nathanaelkane/vim-indent-guides'
 "Plugin 'altercation/vim-colors-solarized'
+Plugin 'chriskempson/vim-tomorrow-theme'
 Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'SirVer/ultisnips'
@@ -86,10 +87,10 @@ syntax on
 
 set background=dark
 "colorscheme solarized
-"color Tomorrow-Night
-color lucius
+color Tomorrow-Night
+"color lucius
 "LuciusDarkLowContrast
-LuciusBlackLowContrast
+
 
 " 自适应不同语言的智能缩进
 filetype indent on
