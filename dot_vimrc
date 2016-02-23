@@ -1,41 +1,45 @@
-set guifont=Sauce\ Code\ Powerline:h13
+"set guifont=Sauce\ Code\ Powerline:h13
+" set guifont=Monaco\ for\ Powerline:h13
+set guifont=M+\ 1m\ for\ Powerline:h14
 set lines=52 columns=202
 let mapleader = "\<Space>" 
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+call plug#begin('~/.vim/plugged')
 
 " let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'nathanaelkane/vim-indent-guides'
-"Plugin 'altercation/vim-colors-solarized'
-Plugin 'chriskempson/vim-tomorrow-theme'
-Plugin 'majutsushi/tagbar'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
-Plugin 'scrooloose/nerdtree'
-Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'scrooloose/syntastic'
-Plugin 'kien/ctrlp.vim'
+" Plug 'gmarik/Vundle.vim'
+"Plug 'scrooloose/nerdcommenter'
+Plug 'Valloric/YouCompleteMe'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'altercation/vim-colors-solarized'
+Plug 'chriskempson/vim-tomorrow-theme'
+Plug 'majutsushi/tagbar'
+Plug 'tomtom/tcomment_vim'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'scrooloose/nerdtree'
+Plug 'jistr/vim-nerdtree-tabs'
+Plug 'scrooloose/syntastic'
+Plug 'kien/ctrlp.vim'
 "Plugin 'tacahiroy/ctrlp-funky'
-Plugin 'bling/vim-airline'
-Plugin 'tpope/vim-endwise'
-Plugin 'Lokaltog/vim-easymotion'
-Plugin 'jmcantrell/vim-virtualenv'
-Plugin 'django.vim'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'mhinz/vim-startify'
-Plugin 'jonathanfilip/vim-lucius'
+" Plug 'bling/vim-airline'
+Plug 'mhinz/vim-signify'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'tpope/vim-endwise'
+Plug 'Lokaltog/vim-easymotion'
+Plug 'jmcantrell/vim-virtualenv'
+Plug 'django.vim'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'mhinz/vim-startify'
+Plug 'jonathanfilip/vim-lucius'
+Plug 'pearofducks/ansible-vim'
+Plug 'PProvost/vim-ps1'
+Plug 'matze/vim-move'
+call plug#end()
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
@@ -86,8 +90,8 @@ syntax enable
 syntax on
 
 set background=dark
-"colorscheme solarized
-color Tomorrow-Night
+colorscheme solarized
+"color Tomorrow-Night
 "color lucius
 "LuciusDarkLowContrast
 
@@ -119,7 +123,7 @@ let g:indent_guides_guide_size=1
 " 设置 tagbar 子窗口的位置出现在主编辑区的左边 
 let tagbar_right=1 
 " 设置显示／隐藏标签列表子窗口的快捷键。速记：tag list 
-nnoremap <Leader>tl :TagbarToggle<CR> 
+map <Leader>tl :TagbarToggle<CR> 
 " 设置标签子窗口的宽度 
 let tagbar_width=32 
 " tagbar 子窗口中不显示冗余帮助信息 
@@ -161,7 +165,9 @@ let g:tagbar_type_cpp = {
 " YCM快捷键：
 "let g:ycm_key_list_select_completion = ['<c-n>', '<Down>']
 "let g:ycm_key_list_previous_completion = ['<c-p>', '<Up>']
-let g:ycm_path_to_python_interpreter = '/Library/Frameworks/Python.framework/Versions/2.7/bin/python2.7'
+let g:ycm_autoclose_preview_window_after_completion=1
+map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+"let g:ycm_path_to_python_interpreter = '/usr/local/Cellar/python/2.7.10_2/Frameworks/Python.framework/Versions/2.7/bin'
 let g:ycm_min_num_of_chars_for_completion = 1
 let g:ycm_auto_trigger = 1
 let g:ycm_add_preview_to_completeopt = 1
@@ -187,6 +193,9 @@ let g:UltiSnipsListSnippets        = "<c-k>" "List possible snippets based on cu
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 
+let g:UltiSnipsSnippetsDir="~/.vim/vim_snips/"
+let g:UltiSnipsSnippetDirectories=["UltiSnips", "vim_snips"]
+
 " 使用 NERDTree 插件查看工程文件。设置快捷键，速记：file list
 nmap <Leader>fl :NERDTreeToggle<CR>
 " 设置NERDTree子窗口宽度
@@ -196,7 +205,7 @@ let NERDTreeWinPos="left"
 " 显示隐藏文件
 let NERDTreeShowHidden=1
 " NERDTree 子窗口中不显示冗余帮助信息
-let NERDTreeMinimalUI=1
+let NERDTreeMinimalUI=0
 " 删除文件时自动删除文件对应 buffer
 let NERDTreeAutoDeleteBuffer=1
 
@@ -212,15 +221,18 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_python_checkers = ['flake8']
+let g:syntastic_html_tidy_exec = 'tidy5'
+let g:syntastic_yaml_checkers = ['jsyaml']
 
-nmap <Leader>af :Autoformat<CR>
-
-let g:ctrlp_map = '<c-s-o>'
+"<Leader>af :Autoformat<CR>
+"let g:ctrlp_map = '<c-s-o>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.pyd
 let g:ctrlp_custom_ignore = {'dir': '\v[\/]\.(git|hg|svn)$', 'file': '\v\.(exe|so|dll|dmg)$', 'link': 'some_bad_symbolic_links'}
 
+nnoremap <Leader>b :CtrlPBuffer<CR>
+nnoremap <Leader>p :CtrlP<CR>
 nnoremap <Leader>fu :CtrlPFunky<Cr>
 nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
 let g:ctrlp_funky_matchtype = 'path'
@@ -228,7 +240,7 @@ let g:ctrlp_funky_syntax_highlight = 1
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-
+let g:airline_theme='simple'
 let g:multi_cursor_use_default_mapping=0
 let g:multi_cursor_start_key='<C-n>'
 let g:multi_cursor_next_key='<C-n>'
@@ -236,11 +248,16 @@ let g:multi_cursor_prev_key='<C-b>'
 let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
 
+
+let g:ansible_extra_syntaxes = "sh.vim ruby.vim"
+let g:ansible_attribute_highlight = "oadb"
+let g:ansible_name_highlight = "db"
+
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 match OverLength /\%81v.\+/
 
 " auto format python
-autocmd FileType python nnoremap <leader>y :0,$!yapf<Cr>
+autocmd FileType python nnoremap <leader>y :0,$!yapf --style=pep8<CR>
 
 set autoread
 
@@ -253,3 +270,30 @@ endfunction
  
 " tmux copypaste integration
 set clipboard=unnamed
+
+"au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+set encoding=utf-8
+let python_highlight_all=1
+
+
+""python with virtualenv support
+"py << EOF
+"import os
+"import sys
+"if 'VIRTUAL_ENV' in os.environ:
+    "project_base_dir = os.environ['VIRTUAL_ENV']
+    "activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+    "execfile(activate_this, dict(__file__=activate_this))
+"EOF
+
+" move up/down line
+" nnoremap <S-Up> :m-2<CR>
+" nnoremap <S-Down> :m+<CR>
+" inoremap <S-Up> <Esc>:m-2<CR>
+" inoremap <S-Down> <Esc>:m+<CR>
+" vim-move config
+let g:move_key_modifier = 'S'
+
+
+" no swap file
+set noswapfile
