@@ -98,7 +98,8 @@ export PATH="$PATH:$GOPATH/bin:$GOROOT/bin"
 export PATH="$PATH:/Users/samliu/.packer.d/plugins"
 export POWERLINE_COMMAND=powerline
 
-export HOMEBREW_GITHUB_API_TOKEN="b710f07a71ef8f74da2022cb0c7113c42e49a057"
+# export HOMEBREW_GITHUB_API_TOKEN="b710f07a71ef8f74da2022cb0c7113c42e49a057"
+export HOMEBREW_GITHUB_API_TOKEN="e866e2b349ff969d4c3dca56fc60a68a5ed15d5a"
 
 ~/Library/Python/2.7/bin/powerline-daemon -q
 
@@ -122,14 +123,17 @@ bindkey '^Z' fancy-ctrl-z
 export DISABLE_AUTO_TITLE=true
 
 export PATH="/usr/local/sbin:$PATH"
+export GROOVY_HOME=/usr/local/opt/groovy/libexec
 
 # export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 # export PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
 # export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}
-export GROOVY_HOME=/usr/local/opt/groovy/libexec
 
 eval "$(thefuck --alias)"
 
-
 test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_integration.zsh
+
+# Base16 Shell
+BASE16_SHELL="$HOME/dotfiles/base16-shell/base16-flat.dark.sh"
+[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL

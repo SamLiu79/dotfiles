@@ -37,6 +37,7 @@ Plug 'mhinz/vim-startify'
 Plug 'jonathanfilip/vim-lucius'
 Plug 'pearofducks/ansible-vim'
 Plug 'PProvost/vim-ps1'
+Plug 'chriskempson/base16-vim'
 Plug 'matze/vim-move'
 call plug#end()
 
@@ -90,7 +91,10 @@ syntax enable
 syntax on
 
 set background=dark
-colorscheme solarized
+let base16colorspace=256  " Access colors present in 256 colorspace
+
+colorscheme base16-flat
+" colorscheme solarized
 "color Tomorrow-Night
 "color lucius
 "LuciusDarkLowContrast

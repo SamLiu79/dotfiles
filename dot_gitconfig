@@ -24,3 +24,5 @@
 	submodule = log
 [color]
 	ui = true
+[push]
+	default = simple
