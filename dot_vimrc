@@ -1,7 +1,7 @@
 "set guifont=Sauce\ Code\ Powerline:h13
-" set guifont=Monaco\ for\ Powerline:h13
-set guifont=M+\ 1m\ for\ Powerline:h14
-set lines=52 columns=202
+set guifont=Monaco\ for\ Powerline:h14
+" set guifont=Sauce Code Powerline Regular
+" set lines=52 columns=202
 let mapleader = "\<Space>" 
 set nocompatible              " be iMproved, required
 filetype off                  " required
@@ -21,6 +21,7 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'scrooloose/syntastic'
 Plug 'kien/ctrlp.vim'
 "Plugin 'tacahiroy/ctrlp-funky'
@@ -39,6 +40,12 @@ Plug 'pearofducks/ansible-vim'
 Plug 'PProvost/vim-ps1'
 Plug 'chriskempson/base16-vim'
 Plug 'matze/vim-move'
+Plug 'miyakogi/conoline.vim'
+Plug 'itchyny/vim-cursorword'
+Plug 'mattn/emmet-vim'
+Plug 'pangloss/vim-javascript'
+Plug 'posva/vim-vue'
+
 call plug#end()
 
 filetype plugin indent on    " required
@@ -46,7 +53,7 @@ filetype plugin indent on    " required
 "filetype plugin on
 "
 " Brief help
-" :PluginList       - lists configured plugins
+":PluginList       - lists configured plugins
 " :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
 " :PluginSearch foo - searches for foo; append `!` to refresh local cache
 " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
@@ -73,6 +80,10 @@ set laststatus=2
 set ruler
 " 开启行号显示
 set number
+
+set scrolloff=3
+set showmatch
+
 " 高亮显示当前行/列
 set cursorline
 set cursorcolumn
@@ -95,25 +106,15 @@ let base16colorspace=256  " Access colors present in 256 colorspace
 
 colorscheme base16-flat
 " colorscheme solarized
-"color Tomorrow-Night
-"color lucius
+" color Tomorrow-Night
+" color base16
 "LuciusDarkLowContrast
 
 
 " 自适应不同语言的智能缩进
 filetype indent on
-" 将制表符扩展为空格
-set expandtab
-" 设置编辑时制表符占用空格数
-set tabstop=4
-" 设置格式化时制表符占用空格数
-set shiftwidth=4
-" 让 vim 把连续数量的空格视为一个制表符
-set softtabstop=4
-
 set showmatch
 
-" auto indent tab
 " 随 vim 自启动
 let g:indent_guides_enable_on_vim_startup=1
 " 从第二层开始可视化显示缩进
@@ -201,7 +202,7 @@ let g:UltiSnipsSnippetsDir="~/.vim/vim_snips/"
 let g:UltiSnipsSnippetDirectories=["UltiSnips", "vim_snips"]
 
 " 使用 NERDTree 插件查看工程文件。设置快捷键，速记：file list
-nmap <Leader>fl :NERDTreeToggle<CR>
+" nmap <Leader>f :NERDTreeToggle<CR>
 " 设置NERDTree子窗口宽度
 let NERDTreeWinSize=32
 " 设置NERDTree子窗口位置
@@ -209,12 +210,15 @@ let NERDTreeWinPos="left"
 " 显示隐藏文件
 let NERDTreeShowHidden=1
 " NERDTree 子窗口中不显示冗余帮助信息
-let NERDTreeMinimalUI=0
+let NERDTreeMinimalUI=1
 " 删除文件时自动删除文件对应 buffer
 let NERDTreeAutoDeleteBuffer=1
+let NERDTreeShowLineNumbers=1
 
-let g:nerdtree_tabs_open_on_console_startup=0
-map <leader>n <plug>NERDTreeTabsToggle <CR>
+
+let g:nerdtree_tabs_open_on_console_startup=1
+let g:nerdtree_tabs_open_on_gui_startup=1
+map <leader>f <plug>NERDTreeTabsToggle<CR>
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -275,20 +279,10 @@ endfunction
 " tmux copypaste integration
 set clipboard=unnamed
 
-"au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 set encoding=utf-8
 let python_highlight_all=1
 
-
-""python with virtualenv support
-"py << EOF
-"import os
-"import sys
-"if 'VIRTUAL_ENV' in os.environ:
-    "project_base_dir = os.environ['VIRTUAL_ENV']
-    "activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-    "execfile(activate_this, dict(__file__=activate_this))
-"EOF
+" let g:conoline_auto_enable = 1
 
 " move up/down line
 " nnoremap <S-Up> :m-2<CR>
@@ -301,3 +295,4 @@ let g:move_key_modifier = 'S'
 
 " no swap file
 set noswapfile
+
