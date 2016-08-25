@@ -1,0 +1,72 @@
+set background=dark
+" let base16colorspace=256
+colorscheme gruvbox
+let mapleader = "\<Space>"
+
+nnoremap <Leader>b :CtrlPBuffer<CR>
+nnoremap <Leader>p :CtrlP<CR>
+
+nmap <Leader>f :NERDTreeToggle<CR>
+let g:nerdtree_tabs_open_on_console_startup=1
+let g:nerdtree_tabs_open_on_gui_startup=1
+
+nmap <Leader>t :TagbarToggle<CR>
+
+let g:UltiSnipsExpandTrigger       = "<c-j>"
+let g:UltiSnipsJumpForwardTrigger  = "<c-j>"
+let g:UltiSnipsJumpBackwardTrigger = "<c-p>"
+let g:UltiSnipsListSnippets        = "<c-k>" "List possible snippets based on current file
+let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsSnippetsDir="~/.vim/vim_snips/"
+let g:UltiSnipsSnippetDirectories=["UltiSnips", "vim_snips"]
+
+let g:multi_cursor_use_default_mapping=0
+let g:multi_cursor_start_key='<C-n>'
+let g:multi_cursor_next_key='<C-n>'
+let g:multi_cursor_prev_key='<C-b>'
+let g:multi_cursor_skip_key='<C-x>'
+let g:multi_cursor_quit_key='<Esc>'
+
+
+let g:ansible_extra_syntaxes = "sh.vim ruby.vim"
+let g:ansible_attribute_highlight = "oadb"
+let g:ansible_name_highlight = "db"
+
+nnoremap <Leader>w :w<CR> 
+nnoremap <Leader>q :close<CR> 
+
+" vim-javascript
+augroup vimrc-javascript
+  autocmd!
+  autocmd FileType javascript set tabstop=2|set shiftwidth=2|set expandtab softtabstop=2 smartindent
+augroup END
+
+let g:indentLine_enabled = 1
+let g:indentLine_concealcursor = 0
+" let g:indentLine_char = '┆'
+let g:indentLine_char = '|'
+let g:indentLine_faster = 1
+
+set cursorline
+set cursorcolumn
+
+set gfn=Monaco\ 14
+set guifont=Monaco:h14
+
+let g:ycm_python_binary_path = '/usr/local/Cellar/python/2.7.12/Frameworks/Python.framework/Versions/2.7/bin/python'
+let g:ycm_server_python_interpreter = '/usr/local/Cellar/python/2.7.12/Frameworks/Python.framework/Versions/2.7/bin/python'
+let g:ycm_autoclose_preview_window_after_completion=1
+map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+let g:ycm_min_num_of_chars_for_completion = 1
+let g:ycm_auto_trigger = 1
+let g:ycm_add_preview_to_completeopt = 1
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_filepath_completion_use_working_dir = 1
+let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_use_ultisnips_completer = 1
+let g:ycm_seed_identifiers_with_syntax = 1
+let g:ycm_complete_in_comments = 1
+let g:ycm_complete_in_strings = 1
+"
+
