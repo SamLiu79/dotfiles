@@ -1,6 +1,26 @@
+"Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
+"If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
+"(see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
+if (empty($TMUX))
+  if (has("nvim"))
+  "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  endif
+  "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
+  "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
+  " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
+  if (has("termguicolors"))
+    set termguicolors
+  endif
+endif
+" set guicolors
+let macvim_skip_colorscheme=1
+
 set background=dark
-" let base16colorspace=256
-colorscheme gruvbox
+let g:airline_theme='one'
+colorscheme one
+let g:one_allow_italics=1
+" colorscheme gruvbox
 let mapleader = "\<Space>"
 
 nnoremap <Leader>b :CtrlPBuffer<CR>
@@ -9,6 +29,7 @@ nnoremap <Leader>p :CtrlP<CR>
 nmap <Leader>f :NERDTreeToggle<CR>
 let g:nerdtree_tabs_open_on_console_startup=1
 let g:nerdtree_tabs_open_on_gui_startup=1
+let g:NERDTreeWinSize = 32
 
 nmap <Leader>t :TagbarToggle<CR>
 
@@ -41,7 +62,7 @@ augroup vimrc-javascript
   autocmd FileType javascript set tabstop=2|set shiftwidth=2|set expandtab softtabstop=2 smartindent
 augroup END
 
-let g:indentLine_enabled = 1
+let g:indentLine_enabled = 0
 let g:indentLine_concealcursor = 0
 " let g:indentLine_char = '┆'
 let g:indentLine_char = '|'
@@ -50,8 +71,8 @@ let g:indentLine_faster = 1
 set cursorline
 set cursorcolumn
 
-set gfn=Monaco\ 14
-set guifont=Monaco:h14
+set gfn=Hack:h14
+set guifont=Hack:h14
 
 let g:ycm_python_binary_path = '/usr/local/Cellar/python/2.7.12/Frameworks/Python.framework/Versions/2.7/bin/python'
 let g:ycm_server_python_interpreter = '/usr/local/Cellar/python/2.7.12/Frameworks/Python.framework/Versions/2.7/bin/python'
@@ -68,5 +89,8 @@ let g:ycm_use_ultisnips_completer = 1
 let g:ycm_seed_identifiers_with_syntax = 1
 let g:ycm_complete_in_comments = 1
 let g:ycm_complete_in_strings = 1
-"
 
+set clipboard=unnamed
+let g:indent_guides_enable_on_vim_startup=1
+let g:indent_guides_start_level=2
+let g:indent_guides_guide_size=1
